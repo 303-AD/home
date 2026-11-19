@@ -1,0 +1,93 @@
+import React, { useState } from "react";
+
+function ProductCatalogue() {
+  const [form, setForm] = useState({
+    name: "",
+    price: "",
+    category: "",
+  });
+
+  const [products, setProducts] = useState([]);
+
+  // Handle input changes
+  const handleChange = (e) => {
+    setForm({
+      ...form,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  // Handle form submission
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setProducts([...products, form]);
+    setForm({
+      name: "",
+      price: "",
+      category: "",
+    });
+  };
+
+  return (
+    <div style={{
+      maxWidth: "400px",
+      margin: "auto",
+      padding: "20px",
+      border: "1px solid #ccc",
+      borderRadius: "8px",
+    }}>
+      <h2>Product Catalogue</h2>
+
+      <form onSubmit={handleSubmit}>
+        <label>Product Name:</label>
+        <input type="text" name="name"
+          value={form.name} onChange={handleChange}
+          required style={{ width: "100%", padding: "8px" }} />
+
+        <br /><br />
+
+        <label>Price:</label>
+        <input type="number" name="price"
+          value={form.price} onChange={handleChange}
+          required style={{ width: "100%", padding: "8px" }} />
+
+        <br /><br />
+
+        <label>Category:</label>
+        <select name="category" value={form.category}
+          onChange={handleChange} required
+          style={{ width: "100%", padding: "8px" }}>
+          <option value="">Select Category</option>
+          <option value="Electronics">Electronics</option>
+          <option value="Clothing">Clothing</option>
+          <option value="Books">Books</option>
+        </select>
+
+        <br /><br />
+
+        <button type="submit" style={{
+          padding: "10px 15px",
+          backgroundColor: "blue",
+          color: "white",
+          border: "none",
+          borderRadius: "5px",
+        }}>
+          Add Product
+        </button>
+      </form>
+
+      <h3>Product List</h3>
+
+      {products.map((product, index) => (
+        <div key={index}>
+          <p>Product: {product.name}</p>
+          <p>Price: ₹{product.price}</p>
+          <p>Category: {product.category}</p>
+          <hr />
+        </div>
+      ))}
+    </div>
+  );
+}
+
+export default ProductCatalogue;
