@@ -1,0 +1,18 @@
+Commands in Sequence
+ * git --version
+ * git init
+ * git clone <URL>
+ * cd <repo name>
+ * git add <filename>
+ * git add .
+ * git commit -m "<msg>"
+ * git status
+ * git push -u origin main
+ * git branch <branchname>
+ * git checkout <branch name>
+ * git push -u origin <branchname>
+ * git merge <branchname>
+Note Points
+ * Note: The "URL" is to be copied from the repository's "code" button from the GitHub site.
+ * Note: Make any changes in any of the files of the cloned repository.
+ * Note: Repeat some of the same commands again, such as: git add <filename>, git add ., git commit -m "<msg>", git push -u origin <branchname>.
